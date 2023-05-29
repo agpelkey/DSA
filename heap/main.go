@@ -78,16 +78,15 @@ func (h *MaxHeap) maxHeapifyDown(index int) {
         } else { // when right child is larger
             childToCompare = r
         }
+        if h.array[index] < h.array[childToCompare] {
+            h.swap(index, childToCompare)
+            index = childToCompare
+            l, r = left(index), right(index)
+        } else {
+            return
+        }
     }
 
-    // compare array value of current index to larger child and swap if smaller
-    if h.array[index] < h.array[childToCompare] {
-        h.swap(index, childToCompare)
-        index = childToCompare
-        l, r = left(index), right(index)
-    } else {
-        return
-    }
 }
 
 
